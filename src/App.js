@@ -5,10 +5,14 @@ import './assets/css/App.css';
 //Importar componentes
 import MiComponente from './components/MiComponente';
 import Peliculas from './components/Peliculas'
+import Header from './components/header'
 
 function App() {
   return (
     <div className="App">
+
+      <Header/>
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
