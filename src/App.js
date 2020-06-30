@@ -4,7 +4,7 @@ import './assets/css/App.css';
 
 //Importar componentes
 import MiComponente from './components/MiComponente';
-
+import Peliculas from './components/Peliculas'
 
 function App() {
   return (
@@ -12,12 +12,14 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Hola a todos.
         </p>
 
           <section className="componentes">
             <MiComponente/>
           </section>
+        
+        <Peliculas/>
 
       </header>
     </div>
