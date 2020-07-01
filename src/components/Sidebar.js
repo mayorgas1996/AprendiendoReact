@@ -15,7 +15,7 @@ class Sidebar extends Component {
                     <p>Encuentra el articulo que buscas</p>
                     <form>
                         <input type="text" name="search"/>
-                        <input type="submit" name="submit" value="Buscar" class="btn" />
+                        <input type="submit" name="submit" value="Buscar" className="btn" />
                     </form>
                 </div>
             </aside>
