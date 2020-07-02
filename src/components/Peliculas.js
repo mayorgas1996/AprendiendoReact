@@ -10,15 +10,51 @@ class Peliculas extends Component {
       { titulo: 'Gran torino', image: "https://www.artmajeur.com/medias/standard/f/a/fasquelolivier/artwork/11789156_gran-torino.jpg"},
       { titulo: 'Forrest Gun', image: "https://pics.filmaffinity.com/Forrest_Gump-212765827-large.jpg"}
     ],
-    nombre: 'Javier Mayorgas'
+    nombre: 'Javier Mayorgas',
+    favorita: {}
   };
 
+  cambiarTitulo = () => {
+
+    var {peliculas} = this.state;
+
+    peliculas[0].titulo = 'Batman Begins';
+
+    this.setState({
+      peliculas: peliculas
+    })
+  }
+
+  favorita = (pelicula) => {
+
+    this.setState({
+      favorita: pelicula
+    })
+
+  }
+
   render() {
+
+    var pStyle = {
+      background: 'green',
+      color: 'white',
+      padding: '10px'
+    };
+
     return (
       <div id="content" className="peliculas">
 
         <h2>Peliculas</h2>
         <p>Selección de las películas del usuario {this.state.nombre}</p>
+        <div>
+          <button onClick={this.cambiarTitulo}>Cambiar titulo Batman</button>
+        </div>
+        { //If en ReactJS
+          this.state.favorita.titulo &&
+          <p className="favorita" style={pStyle}>
+            <strong>La pelicula favorita es: </strong> <span>{this.state.favorita.titulo}</span>
+          </p>
+        }
 
         {/*Crear componente de películas*/}
 
@@ -30,6 +66,7 @@ class Peliculas extends Component {
               <Pelicula 
                 key={i}
                 pelicula={pelicula}
+                marcarFavorita = {this.favorita}
               />
             );
           })
