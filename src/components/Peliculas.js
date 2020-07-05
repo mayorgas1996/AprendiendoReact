@@ -5,13 +5,7 @@ import Pelicula from './Pelicula'
 class Peliculas extends Component {
 
   state = {
-    peliculas: [
-      { titulo: 'Batman vs Superman', image: "https://www.comicverso.com/wp-content/uploads/2019/12/destacada-batmanvssuperman.jpg"},
-      { titulo: 'Gran torino', image: "https://www.artmajeur.com/medias/standard/f/a/fasquelolivier/artwork/11789156_gran-torino.jpg"},
-      { titulo: 'Forrest Gun', image: "https://pics.filmaffinity.com/Forrest_Gump-212765827-large.jpg"}
-    ],
-    nombre: 'Javier Mayorgas',
-    favorita: {}
+    
   };
 
   cambiarTitulo = () => {
@@ -33,6 +27,23 @@ class Peliculas extends Component {
 
   }
 
+  componentWillMount() {
+    //alert("Se va a montar el componente");
+    this.setState({
+      peliculas: [
+        { titulo: 'Batman vs Superman', image: "https://www.comicverso.com/wp-content/uploads/2019/12/destacada-batmanvssuperman.jpg"},
+        { titulo: 'Gran torino', image: "https://www.artmajeur.com/medias/standard/f/a/fasquelolivier/artwork/11789156_gran-torino.jpg"},
+        { titulo: 'Forrest Gun', image: "https://pics.filmaffinity.com/Forrest_Gump-212765827-large.jpg"}
+      ],
+      nombre: 'Javier Mayorgas',
+      favorita: {}
+    });
+  }
+
+  componentDidMount() {
+    //alert("Se ha montado el componente");
+  }
+
   render() {
 
     var pStyle = {
@@ -50,10 +61,15 @@ class Peliculas extends Component {
           <button onClick={this.cambiarTitulo}>Cambiar titulo Batman</button>
         </div>
         { //If en ReactJS
-          this.state.favorita.titulo &&
-          <p className="favorita" style={pStyle}>
-            <strong>La pelicula favorita es: </strong> <span>{this.state.favorita.titulo}</span>
-          </p>
+          this.state.favorita.titulo ?
+          (
+            <p className="favorita" style={pStyle}>
+              <strong>La pelicula favorita es: </strong> <span>{this.state.favorita.titulo}</span>
+            </p>
+          ) : 
+          (
+            <p>No hay pelicula favorita</p>
+          )
         }
 
         {/*Crear componente de películas*/}
