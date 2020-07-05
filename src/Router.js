@@ -16,11 +16,31 @@ class Router extends Component {
                 <Switch>
                     <Route exact path="/" component={Peliculas}/>
                     <Route exact path="/ruta-prueba" component={SeccionPruebas}/>
-                    <Route exact path="/segunda_ruta" component={MiComponente}/>
-                
+                    <Route exact path="/segunda_ruta" component={MiComponente}/>                
+                    <Route exact path="/pruebas/:nombre/:apellidos?" render = { (props) => {
+                        
+                        var nombre = props.match.params.nombre;
+                        var apellidos = props.match.params.apellidos;
+
+                        return(
+                            <div id="content">
+                                <h1 className="subheader">Página de pruebas</h1>
+                                <h2>
+                                    {nombre && !apellidos &&
+                                        <span>{nombre}</span>
+                                    }
+                                    {nombre && apellidos &&
+                                        <span>{nombre} {apellidos}</span>
+                                    }
+                                </h2>
+                            </div>
+                        );
+                    }}/>
+
                     <Route component={Error}/>
+
                 </Switch>
-                
+
             </BrowserRouter>
         );
     }
