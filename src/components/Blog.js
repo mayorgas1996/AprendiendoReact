@@ -7,9 +7,8 @@ class Home extends Component {
         return(
             <div id="home">
                 <Slider
-                    title="Bienvenido a la web de AprendiendoDjango con Javier Mayorgas"
-                    btn="Ir al blog"
-                    size="slider-big"
+                    title="Blog"
+                    size="slider-small"
                 />
                 <div className="center">
 
@@ -17,7 +16,9 @@ class Home extends Component {
                         <h1 className="subheader">Últimos articulos</h1>
                     </div>
 
-                    <Sidebar />
+                    <Sidebar 
+                        blog = "true"
+                    />
 
                 </div>
 

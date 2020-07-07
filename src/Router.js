@@ -10,6 +10,8 @@ import Peliculas from './components/Peliculas';
 import MiComponente from './components/MiComponente';
 import Error from './components/Error';
 import Home from './components/Home';
+import Blog from './components/Blog';
+import Formulario from './components/Formulario';
 
 class Router extends Component {
 
@@ -25,7 +27,9 @@ class Router extends Component {
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/home" component={Home} />
-                        <Route exact path="/ruta-prueba" component={SeccionPruebas} />
+                        <Route exact path="/blog" component={Blog} />
+                        <Route exact path="/formulario" component={Formulario} />
+                        <Route exact path="/peliculas" component={Peliculas} />
                         <Route exact path="/segunda_ruta" component={MiComponente} />
                         <Route exact path="/pruebas/:nombre/:apellidos?" render={(props) => {
 

@@ -5,19 +5,19 @@ import Sidebar from './Sidebar';
 class Home extends Component {
     render(){
         return(
-            <div id="home">
+            <div id="formulario">
                 <Slider
-                    title="Bienvenido a la web de AprendiendoDjango con Javier Mayorgas"
-                    btn="Ir al blog"
-                    size="slider-big"
+                    title="Formulario"
+                    size="slider-small"
                 />
                 <div className="center">
 
                     <div id="content">
-                        <h1 className="subheader">Últimos articulos</h1>
                     </div>
 
-                    <Sidebar />
+                    <Sidebar 
+                        blog = "false"
+                    />
 
                 </div>
 
