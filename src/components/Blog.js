@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import Slider from './Slider';
 import Sidebar from './Sidebar';
+import Articles from './Articles';
 
-class Home extends Component {
+class Blog extends Component {
+
     render(){
+
         return(
             <div id="home">
                 <Slider
@@ -13,9 +16,9 @@ class Home extends Component {
                 <div className="center">
 
                     <div id="content">
-                        <h1 className="subheader">Últimos articulos</h1>
+                        <Articles/>
                     </div>
-
+                    
                     <Sidebar 
                         blog = "true"
                     />
@@ -27,4 +30,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default Blog;
