@@ -3,6 +3,8 @@ import axios from 'axios';
 import Gobal from '../Global';
 import Global from '../Global';
 import imageDefault from '../assets/images/default.png';
+import Moment from 'react-moment';
+import 'moment/locale/es';
 
 class Articles extends Component {
 
@@ -44,7 +46,7 @@ class Articles extends Component {
                         </div>
                         <h2>{article.title}</h2>
                         <span className="date">
-                            {article.date}
+                            <Moment locale="es" fromNow>{article.date}</Moment>
                         </span>
                         <a href="#">Leer más</a>
 
