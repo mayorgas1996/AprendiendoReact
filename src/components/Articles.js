@@ -1,8 +1,12 @@
 import React, {Component} from 'react'
 import axios from 'axios';
-
+import Gobal from '../Global';
+import Global from '../Global';
+import imageDefault from '../assets/images/default.png';
 
 class Articles extends Component {
+
+    url = Global.url;
 
     state = {
         articles: {},
@@ -14,7 +18,7 @@ class Articles extends Component {
     }
 
     getArticles = ()  => {
-        axios.get("http://localhost:3900/api/articles")
+        axios.get(this.url + 'articles')
         .then(res => {
             this.setState({
                 articles: res.data.articles,
@@ -30,7 +34,13 @@ class Articles extends Component {
                 return (
                     <article id={article.id} className="article-item" id="article-template">
                         <div className="image-wrap">
-                            <img src="https://i.pinimg.com/originals/2a/00/0d/2a000d5c32ea3ef6c3fd4e4dbcb8a5b1.jpg" alt="Imagen"></img>
+                            {article.image !== null ?
+                                (<img src={this.url + 'get-image/' + article.image} alt="Imagen"></img>)
+                                :
+                                (<img src={imageDefault} alt="Imagen"></img>)
+
+                            }
+                            <img src={this.url + 'get-image/' + article.image} alt="Imagen"></img>
                         </div>
                         <h2>{article.title}</h2>
                         <span className="date">
