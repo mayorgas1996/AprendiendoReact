@@ -236,6 +236,7 @@ body {
 }
 
 input[type="text"],
+input[type="file"]
 textarea{
     width: 100%;
     min-height: 30px;
@@ -248,6 +249,10 @@ textarea{
 input[type="text"]:focus,
 textarea:focus{
     box-shadow: 0px 0px 5px #eee inset;
+}
+
+input[type="submit"]{
+    margin-top: 15px;
 }
 
 textarea{
