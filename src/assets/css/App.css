@@ -208,6 +208,19 @@ body {
     background:black;
 }
 
+.btn-danger{
+    background: rgb(250,0,0) !important;
+    color: white !important;
+    float: left;
+    margin-right: 20px;
+}
+
+.btn-warning{
+    background: rgb(250,171,0) !important;
+    color: white !important;
+    float: left;
+}
+
 .mid-form{
     width: 50%;
     margin: 0px auto;

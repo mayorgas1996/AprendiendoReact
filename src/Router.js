@@ -13,6 +13,7 @@ import Home from './components/Home';
 import Blog from './components/Blog';
 import Formulario from './components/Formulario';
 import Search from './components/Search';
+import Article from './components/Article';
 
 class Router extends Component {
 
@@ -39,9 +40,7 @@ class Router extends Component {
                                 );
                             }
                         }/>
-                        <Route exact path="/blog/articulo/:id" render={() => (
-                            <h1>Pagina individual del articulo</h1>
-                        )}/>
+                        <Route exact path="/blog/articulo/:id" component={Article}/>
                         <Route exact path="/formulario" component={Formulario} />
                         <Route exact path="/peliculas" component={Peliculas} />
                         <Route exact path="/segunda_ruta" component={MiComponente} />
