@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import axios from 'axios';
-import Gobal from '../Global';
 import Global from '../Global';
 import imageDefault from '../assets/images/default.png';
 import Moment from 'react-moment';
@@ -23,7 +22,7 @@ class Articles extends Component {
         if(home === "true"){
             this.getLastArticles();
         }
-        else if(search && search != null && search != undefined){
+        else if(search && search !== null && search != undefined){
             this.getArticlesBySearch(search);
         }
         else{
@@ -74,7 +73,7 @@ class Articles extends Component {
 
             var listArticles = this.state.articles.map((article) =>{
                 return (
-                    <article id={article.id} className="article-item" id="article-template">
+                    <article key={article._id} className="article-item" id="article-template">
                         <div className="image-wrap">
                             {article.image !== null ?
                                 (<img src={this.url + 'get-image/' + article.image} alt="Imagen"></img>)
