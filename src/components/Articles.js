@@ -22,7 +22,7 @@ class Articles extends Component {
         if(home === "true"){
             this.getLastArticles();
         }
-        else if(search && search !== null && search != undefined){
+        else if(search && search !== null && search !== undefined){
             this.getArticlesBySearch(search);
         }
         else{

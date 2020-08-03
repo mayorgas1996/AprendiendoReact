@@ -48,11 +48,13 @@ class Peliculas extends Component {
 
   render() {
 
+    /*    
     var pStyle = {
       background: 'green',
       color: 'white',
       padding: '10px'
     };
+    */
 
     return (
 

@@ -3,9 +3,7 @@ import { BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 
 //Importar componentes
 import Header from './components/Header';
-import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
-import SeccionPruebas from './components/SeccionPruebas';
 import Peliculas from './components/Peliculas';
 import MiComponente from './components/MiComponente';
 import Error from './components/Error';

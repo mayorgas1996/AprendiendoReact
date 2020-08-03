@@ -14,7 +14,8 @@ class CreateArticle extends Component{
 
     state = {
         article: {},
-        status: null
+        status: null,
+        selectedFile: null
     };
 
     saveArticle = (e) => {
@@ -26,11 +27,51 @@ class CreateArticle extends Component{
         //Hacer una petición HTTP por POST para guardar el artículo
         axios.post(this.url + 'save', this.state.article)
             .then( res => {
+                console.log('Res.data.article es: ' + res.data.article);
                 if(res.data.article){
                     this.setState({
                         article: res.data.article,
-                        status: 'success'
+                        status: 'waiting'
                     });
+
+                    //Subir la imagen
+                    if(this.state.selectedFile !== null){
+                        
+                        //Sacar el id del articulo guardado
+                        var article_id = this.state.article._id;
+
+                        // Crear form data y añadir fichero
+                        const form_data = new FormData();
+
+                        form_data.append(
+                            'file0',
+                            this.state.selectedFile,
+                            this.state.selectedFile.name
+                        );
+
+                        // Petición AJAX
+                        axios.post(this.url + 'upload-image/' + article_id, form_data)
+                            .then(res => {
+                                if(res.data.article){
+                                    this.setState({
+                                        article: res.data.article,
+                                        status: 'success'
+                                    });
+                                }
+                                else{
+                                    this.setState({
+                                        article: res.data.article,
+                                        status: 'failed'
+                                    });
+                                }
+                            });
+
+                    }
+                    else{
+                        this.setState({
+                            status: 'success'
+                        });
+                    }
                 }
                 else{
                     this.setState({
@@ -38,6 +79,8 @@ class CreateArticle extends Component{
                     });
                 }
             });
+
+            console.log(this.state);
     }
 
     changeState = () => {
@@ -47,6 +90,14 @@ class CreateArticle extends Component{
                 content: this.contentRef.current.value
             }
         });
+    }
+
+    fileChange = (event) => {
+        this.setState({
+            selectedFile: event.target.files[0]
+        });
+
+        console.log(this.state);
     }
 
     render(){
@@ -71,7 +122,7 @@ class CreateArticle extends Component{
                         </div>
                         <div className="form-group">
                             <label htmlFor="file0">Imagen</label>
-                            <input type="file" name="file0"/>
+                            <input type="file" name="file0" onChange={this.fileChange}/>
                         </div>
 
                         <input type="submit" value="Guardar" className="btn btn-success"/>
