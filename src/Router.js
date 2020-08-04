@@ -13,6 +13,7 @@ import Formulario from './components/Formulario';
 import Search from './components/Search';
 import Article from './components/Article';
 import CreateArticle from './components/CreateArticle';
+import EditArticle from './components/EditArticle';
 
 class Router extends Component {
 
@@ -44,6 +45,7 @@ class Router extends Component {
                         <Route exact path="/peliculas" component={Peliculas} />
                         <Route exact path="/segunda_ruta" component={MiComponente} />
                         <Route exact path="/blog/crear" component={CreateArticle} />
+                        <Route exact path="/blog/editar/:id" component={EditArticle} />
                         <Route exact path="/pruebas/:nombre/:apellidos?" render={(props) => {
 
                             var nombre = props.match.params.nombre;
