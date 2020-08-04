@@ -3,6 +3,8 @@ import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 import Global from '../Global';
 import Sidebar from './Sidebar';
+import SimpleReactValidator from 'simple-react-validator'; //Validación de formularios
+
 
 //Validación formularios y alertas
 
@@ -18,11 +20,21 @@ class CreateArticle extends Component{
         selectedFile: null
     };
 
+    componentWillMount(){
+        this.validator = new SimpleReactValidator({
+            messages: {
+                required: 'Este campo es requerido.' //Personalización de los mensajes de validación
+            }
+        });
+    }
+
     saveArticle = (e) => {
         e.preventDefault();
 
         //Rellenar state con valores del formulario
         this.changeState();
+
+        if(this.validator.allValid()){
 
         //Hacer una petición HTTP por POST para guardar el artículo
         axios.post(this.url + 'save', this.state.article)
@@ -79,8 +91,18 @@ class CreateArticle extends Component{
                     });
                 }
             });
+        
+        }
+        else{
+            
+            this.setState({
+                status: 'failed'
+            });
 
-            console.log(this.state);
+            this.validator.showMessages();
+            this.forceUpdate();
+        }
+
     }
 
     changeState = () => {
@@ -90,6 +112,10 @@ class CreateArticle extends Component{
                 content: this.contentRef.current.value
             }
         });
+
+        //Para que la validación sea en tiempo real
+        this.validator.showMessages();
+        this.forceUpdate();
     }
 
     fileChange = (event) => {
@@ -115,10 +141,14 @@ class CreateArticle extends Component{
                         <div className="form-group">
                             <label htmlFor="title">Titulo</label>
                             <input type="text" name="title" ref={this.titleRef} onChange={this.changeState}/>
+
+                            {this.validator.message('title', this.state.article.title, 'required|alpha_num_space')}
+                        
                         </div>
                         <div className="form-group">
                             <label htmlFor="content">Contenido</label>
                             <textarea name="content" ref={this.contentRef} onChange={this.changeState}/>
+                            {this.validator.message('content', this.state.article.content, 'required')}
                         </div>
                         <div className="form-group">
                             <label htmlFor="file0">Imagen</label>
