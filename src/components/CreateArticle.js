@@ -4,7 +4,7 @@ import axios from 'axios';
 import Global from '../Global';
 import Sidebar from './Sidebar';
 import SimpleReactValidator from 'simple-react-validator'; //Validación de formularios
-
+import swal from 'sweetalert';
 
 //Validación formularios y alertas
 
@@ -41,10 +41,17 @@ class CreateArticle extends Component{
             .then( res => {
                 console.log('Res.data.article es: ' + res.data.article);
                 if(res.data.article){
+
                     this.setState({
                         article: res.data.article,
                         status: 'waiting'
                     });
+
+                    swal(
+                        'Articulo creado',
+                        'El articulo se ha creado correctamente',
+                        'success'
+                    )
 
                     //Subir la imagen
                     if(this.state.selectedFile !== null){
